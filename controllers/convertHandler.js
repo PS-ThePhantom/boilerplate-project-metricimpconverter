@@ -2,7 +2,18 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let result;
-    
+
+    input = input.split(/[a-zA-Z]/)[0];
+    if (input === "") {
+      result = 1;
+    } else {
+      input = input.split("/");
+      
+      if (input.length > 2) result = "invalid number";
+      else if (input.length === 2) result = Number(input[0]) / Number(input[1]);
+      else result = Number(input[0]);
+    }
+
     return result;
   };
   
