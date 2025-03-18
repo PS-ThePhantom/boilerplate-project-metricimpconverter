@@ -39,12 +39,15 @@ function ConvertHandler() {
       default:
         result = "invalid unit";
     }
+    
+    if (result === "l") result = "L";
 
     return result;
   };
   
   this.getReturnUnit = function(initUnit) {
     let result;
+    initUnit = initUnit.toLowerCase();
 
     if(initUnit === "invalid unit") result = "invalid unit";
     else if (initUnit === "gal") result = "L";
@@ -52,13 +55,15 @@ function ConvertHandler() {
     else if (initUnit === "lbs") result = "kg";
     else if (initUnit === "kg") result = "lbs";
     else if (initUnit === "mi") result = "km";
-    else result = "mi";
+    else if (initUnit === "km") result = "mi";
+    else result = "invalid unit";
     
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     let result;
+    unit = unit.toLowerCase();
 
     if(unit === "invalid unit") result = "invalid unit";
     else if(unit === "gal") result = "gallons";
@@ -76,6 +81,7 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
+    initUnit = initUnit.toLowerCase();
 
     if(initNum === "invalid number" && initUnit === "invalid unit") result = "invalid number and unit";
     else if(initNum === "invalid number") result = "invalid number";
